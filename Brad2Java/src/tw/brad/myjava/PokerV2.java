@@ -2,7 +2,7 @@ package tw.brad.myjava;
 
 public class PokerV2 {
 	public static void main(String[] args) {
-		long start = System.currentTimeMillis();
+		//long start = System.currentTimeMillis();
 		int[] poker = new int[52];
 		for (int i=0; i<poker.length; i++) {
 			int rand;
@@ -21,6 +21,15 @@ public class PokerV2 {
 			System.out.println(poker[i]);
 		}
 		System.out.println("---");
-		System.out.println(System.currentTimeMillis() - start);
+		//System.out.println(System.currentTimeMillis() - start);
+		
+		int[][] players = new int[4][13];
+		for (int i=0; i<poker.length; i++) {
+			players[i%4][i/4] = poker[i];
+		}
+		
+		
+		
+		
 	}
 }
