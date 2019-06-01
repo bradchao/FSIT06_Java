@@ -3,6 +3,11 @@ package tw.brad.myjava;
 public class Scooter extends Bike {
 	private boolean light;
 	
+	public Scooter() {
+		// super();
+		super(4);
+	}
+	
 	public boolean isLight() {return light;}
 	public void switchLight() {light = !light;}
 	
