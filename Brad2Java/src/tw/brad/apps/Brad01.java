@@ -10,6 +10,7 @@ public class Brad01 {
 		s1.upSpeed();s1.upSpeed();
 		System.out.println(s1.getSpeed());
 		b1.upSpeed(); b1.upSpeed();
+		
 		System.out.println(b1.getSpeed());
 		
 		//s1.speed = 100;
