@@ -1,5 +1,7 @@
 package tw.brad.apps;
 
+import tw.brad.myjava.Brad24;
+
 public class Brad04 {
 	public static void main(String[] args) {
 		String s1 = new String();
@@ -9,5 +11,7 @@ public class Brad04 {
 		System.out.println(s1);
 		System.out.println(s2);
 		System.out.println(s3);
+		Brad24 b2 = new Brad24();
+		System.out.println(b2);
 	}
 }

@@ -10,4 +10,8 @@ public class Brad24 {
 	public Brad24(int a , boolean b) {
 		System.out.println("Brad24(int,boolean)");	
 	}
+	
+	public String toString() {
+		return "I am Brad24";
+	}
 }
