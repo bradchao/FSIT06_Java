@@ -4,7 +4,6 @@ public class Scooter extends Bike {
 	private boolean light;
 	
 	public Scooter() {
-		// super();
 		super(4);
 	}
 	
