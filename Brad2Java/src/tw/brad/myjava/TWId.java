@@ -2,6 +2,8 @@ package tw.brad.myjava;
 
 public class TWId {
 	private String id;
+	private static String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
+	
 	public TWId() {
 		this((int)(Math.random()*2) == 0);
 	}
@@ -12,15 +14,34 @@ public class TWId {
 		this((int)(Math.random()*2) == 0,area);
 	}
 	public TWId(boolean isMale, int area) {
+		String temp = letters.substring(area, area+1);
+		temp += isMale?"1":"2";
+		for (int i=0; i<7; i++) temp += (int)(Math.random()*10);
+		for (int i=0; i<10; i++) {
+			if (checkId(temp + i)) {
+				id = temp + i;
+				break;
+			}
+		}
 	}
-//	public TWId(String id) {
-//		this.id = id;
-//	}
+	
+	private TWId(String id) {
+		this.id = id;
+	}
+
+	public static TWId createTWId(String id) {
+		TWId temp = null;
+		if (checkId(id)) {
+			temp = new TWId(id); 
+		}
+		return temp;
+	}
+	
 	
 	public static boolean checkId(String id) {
 		boolean ret = false;
 		if (id.matches("[A-Z][12][0-9]{8}")) {
-			String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
+			
 			char c0 = id.charAt(0);
 			int n12 = letters.indexOf(c0)+10;
 			int n1 = n12 / 10;
