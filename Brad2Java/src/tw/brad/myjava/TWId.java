@@ -14,9 +14,11 @@ public class TWId {
 		this((int)(Math.random()*2) == 0,area);
 	}
 	public TWId(boolean isMale, int area) {
-		String temp = letters.substring(area, area+1);
-		temp += isMale?"1":"2";
-		for (int i=0; i<7; i++) temp += (int)(Math.random()*10);
+		StringBuffer sb = new StringBuffer(letters.substring(area, area+1));
+		sb.append(isMale?"1":"2");
+		for (int i=0; i<7; i++) sb.append((int)(Math.random()*10));
+		
+		String temp = sb.toString();
 		for (int i=0; i<10; i++) {
 			if (checkId(temp + i)) {
 				id = temp + i;
