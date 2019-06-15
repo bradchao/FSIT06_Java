@@ -82,6 +82,20 @@ public class Brad20 extends JFrame implements ActionListener{
 		System.out.println("OK2:" + e.getActionCommand());
 	}
 	
+	class MyListener2 implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("OK:" + e.getActionCommand());
+			if (e.getSource() == b1) {
+				System.out.println("ur B1");
+			}else if (e.getSource() == b2) {
+				System.out.println("ur B2");
+			}else if (e.getSource() == b3) {
+				System.out.println("ur B3");
+			}
+		}
+	}
+	
+	
 	public static void main(String[] args) {
 		new Brad20();
 	}
