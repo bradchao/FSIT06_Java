@@ -24,3 +24,9 @@ class Brad183 extends Brad182 {
 class Brad184 extends Brad182 {
 	public void m1() {System.out.println("B");}
 }
+interface Brad185 {
+	void m3();
+}
+interface Brad186 extends Brad181, Brad185 {
+	void m4();
+}
