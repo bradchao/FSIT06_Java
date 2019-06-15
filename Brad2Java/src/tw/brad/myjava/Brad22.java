@@ -1,5 +1,7 @@
 package tw.brad.myjava;
 
+import tw.brad.apps.*;
+
 public class Brad22 {
 	public static void main(String[] args) {
 		Bike b1 = new Bike(3);
