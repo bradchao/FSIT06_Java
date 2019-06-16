@@ -14,7 +14,7 @@ public class Brad37 {
 			DatagramSocket socket = new DatagramSocket();
 			DatagramPacket packet = new DatagramPacket(
 					buf, buf.length, 
-					InetAddress.getByName("10.0.105.82"), 
+					InetAddress.getByName("10.0.105.255"), 
 					8888);
 			socket.send(packet);
 			socket.close();
