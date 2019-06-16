@@ -11,15 +11,16 @@ import java.net.URL;
 
 public class Brad43 {
 	public static void main(String[] args) {
+		String good = "http://www.bradchao.com";
 		try {
-			URL url = new URL("https://s.yimg.com/ny/api/res/1.2/b3hGcD4V3bHtWSVaVWraYQ--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9MTI4MDtoPTk2MA--/http://media.zenfs.com/zh-Hant-TW/homerun/ftvn.com.tw/4fd52b3f14bd9e1b7305baa04c843bae");
+			URL url = new URL("https://pdfmyurl.com/index.php?url=" + good);
 			HttpURLConnection conn =  (HttpURLConnection)url.openConnection();
 			conn.connect();
 			
 			BufferedInputStream bin = 
 				new BufferedInputStream(conn.getInputStream());
 			BufferedOutputStream bout = 
-				new BufferedOutputStream(new FileOutputStream("dir1/yahoo.jpg"));
+				new BufferedOutputStream(new FileOutputStream("dir1/brad.pdf"));
 			int len; byte[] buf = new byte[4096];
 			while ( (len = bin.read(buf)) != -1) {
 				bout.write(buf, 0, len);
