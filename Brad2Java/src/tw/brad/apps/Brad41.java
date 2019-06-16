@@ -17,14 +17,14 @@ public class Brad41 {
 			bin.read(buf);
 			bin.close();
 			
-			Socket socket = new Socket(InetAddress.getByName(""), 9487);
+			Socket socket = new Socket(InetAddress.getByName("10.0.105.82"), 9487);
 			BufferedOutputStream bout = 
 					new BufferedOutputStream(socket.getOutputStream());
 			bout.write(buf);
 			bout.flush();
 			bout.close();
 			socket.close();
-			
+			System.out.println("Send OK");
 		}catch(Exception e) {
 			System.out.println(e.toString());
 		}
