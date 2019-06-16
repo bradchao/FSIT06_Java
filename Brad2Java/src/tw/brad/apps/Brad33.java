@@ -7,9 +7,9 @@ import java.io.Serializable;
 public class Brad33 {
 
 	public static void main(String[] args) {
-		Student s1 = new Student(90, 79, 87);
-		Student s2 = new Student(40, 49, 67);
-		Student s3 = new Student(92, 73, 85);
+		Student s1 = new Student(90, 100, 80);
+		Student s2 = new Student(40, 100, 60);
+		Student s3 = new Student(70, 100, 80);
 		System.out.println(s1.sum());
 		System.out.println(s1.avg());
 		try {
@@ -27,7 +27,9 @@ public class Brad33 {
 	}
 }
 class Student implements Serializable {
-	int ch, math, eng;
+	int ch;
+	transient int math;
+	int eng;
 	Student(int ch, int math, int eng){this.ch=ch;this.math=math;this.eng=eng;}
 	public int sum() {return ch+math+eng;}
 	public double avg() {return sum()/3.0;}
