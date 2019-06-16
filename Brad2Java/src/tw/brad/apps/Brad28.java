@@ -14,7 +14,7 @@ public class Brad28 {
 					new FileInputStream("dir1/coffee2.jpg");
 			FileOutputStream fout = 
 					new FileOutputStream("dir2/coffee2.jpg");
-			int len; byte[] buf = new byte[4096];
+			int len; byte[] buf = new byte[1024*4096];
 			while ( (len = fin.read(buf)) != -1) {
 				fout.write(buf, 0, len);
 			}
