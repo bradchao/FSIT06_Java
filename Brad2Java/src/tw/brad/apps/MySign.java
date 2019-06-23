@@ -1,11 +1,13 @@
 package tw.brad.apps;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -14,7 +16,7 @@ import javax.swing.JPanel;
 import tw.brad.myjava.MyDrawer;
 
 public class MySign extends JFrame {
-	private JButton clear, undo, redo, saveJPG, saveObj, loadObj;
+	private JButton clear, undo, redo, saveJPG, saveObj, loadObj, changeColor;
 	private MyDrawer myDrawer;
 	
 	public MySign() {
@@ -26,11 +28,13 @@ public class MySign extends JFrame {
 		saveJPG = new JButton("Save JPG");
 		saveObj = new JButton("Save Object");
 		loadObj = new JButton("Load Object");
+		changeColor = new JButton("Change Color");
 		
 		setLayout(new BorderLayout());
 		JPanel top = new JPanel(new FlowLayout());
 		top.add(clear); top.add(undo); top.add(redo);
 		top.add(saveJPG); top.add(saveObj); top.add(loadObj);
+		top.add(changeColor);
 		
 		add(top, BorderLayout.NORTH);
 		
@@ -69,11 +73,23 @@ public class MySign extends JFrame {
 			}
 		});
 		
-		setSize(640, 480);
+		changeColor.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				changeColor();
+			}
+		});
+		
+		setSize(800, 600);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
+	private void changeColor() {
+		Color newColor = JColorChooser.showDialog(this, "更換畫筆顏色", myDrawer.getColor());
+		myDrawer.changeColor(newColor);
+	}
+	
 	private void saveJPEG() {
 		JFileChooser jfc = new JFileChooser();
 		if (jfc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {

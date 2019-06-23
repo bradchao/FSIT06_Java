@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 public class MyDrawer extends JPanel {
 	private LinkedList<LinkedList<Point>> lines, recycler;
+	private Color color;
 	
 	public MyDrawer() {
 		System.out.println("MyDrawer");
@@ -26,6 +27,7 @@ public class MyDrawer extends JPanel {
 		
 		lines = new LinkedList<>();
 		recycler = new LinkedList<>();
+		color = Color.BLUE;
 	}
 
 	private class MyMouseListener extends MouseAdapter {
@@ -82,13 +84,19 @@ public class MyDrawer extends JPanel {
 		Point(int x, int y){this.x = x; this.y = y;}
 	}
 	
+	public Color getColor() {return color;}
+	public void changeColor(Color color) {
+		this.color = color;
+		repaint();
+	}
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		System.out.println("paint");
 		
 		Graphics2D g2d = (Graphics2D)g;
-		g2d.setColor(Color.BLUE);
+		g2d.setColor(color);
 		g2d.setStroke(new BasicStroke(2));
 
 		for (LinkedList<Point> line : lines) {
