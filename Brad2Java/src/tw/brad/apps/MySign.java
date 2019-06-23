@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
@@ -79,6 +80,29 @@ public class MySign extends JFrame {
 				changeColor();
 			}
 		});
+		
+		saveObj.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					myDrawer.saveObject(new File("dir1/brad.object"));
+				}catch(Exception e2) {
+					System.out.println(e2.toString());
+				}
+			}
+		});
+		
+		loadObj.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					myDrawer.loadObject(new File("dir1/brad.object"));
+				}catch(Exception e2) {
+					System.out.println(e2.toString());
+				}
+			}
+		});
+		
 		
 		setSize(800, 600);
 		setVisible(true);
