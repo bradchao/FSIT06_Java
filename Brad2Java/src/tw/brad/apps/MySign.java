@@ -108,6 +108,16 @@ public class MySign extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
+	
+	public MySign(String openFile) {
+		this();
+		try {
+			myDrawer.loadObject(new File(openFile));
+		}catch(Exception e) {
+			System.out.println(e.toString());
+		}
+	}
+	
 
 	private void changeColor() {
 		Color newColor = JColorChooser.showDialog(this, "更換畫筆顏色", myDrawer.getColor());
@@ -132,7 +142,11 @@ public class MySign extends JFrame {
 	
 	
 	public static void main(String[] args) {
-		new MySign();
+		if (args != null && args.length>0) {
+			new MySign(args[0]);
+		}else {
+			new MySign();
+		}
 	}
 
 }
