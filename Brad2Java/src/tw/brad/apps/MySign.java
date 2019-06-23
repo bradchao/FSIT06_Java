@@ -11,14 +11,17 @@ import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import tw.brad.myjava.MyDrawer;
+import tw.brad.myjava.MyDrawerV2;
 
 public class MySign extends JFrame {
 	private JButton clear, undo, redo, saveJPG, saveObj, loadObj, changeColor;
-	private MyDrawer myDrawer;
+	private MyDrawerV2 myDrawer;
 	
 	public MySign() {
 		super("簽名程式");
@@ -39,7 +42,7 @@ public class MySign extends JFrame {
 		
 		add(top, BorderLayout.NORTH);
 		
-		myDrawer = new MyDrawer();
+		myDrawer = new MyDrawerV2();
 		add(myDrawer, BorderLayout.CENTER);
 		
 		clear.addActionListener(new ActionListener() {
@@ -102,7 +105,6 @@ public class MySign extends JFrame {
 				}
 			}
 		});
-		
 		
 		setSize(800, 600);
 		setVisible(true);
