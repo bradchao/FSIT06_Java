@@ -2,9 +2,12 @@ package tw.brad.apps;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import tw.brad.myjava.MyDrawer;
@@ -33,13 +36,41 @@ public class MySign extends JFrame {
 		myDrawer = new MyDrawer();
 		add(myDrawer, BorderLayout.CENTER);
 		
+		clear.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				myDrawer.clear();
+			}
+		});
 		
+		undo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					myDrawer.undo();
+				}catch(Exception e2) {
+					displayDialog();
+				}
+			}
+		});
+		
+		redo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				myDrawer.redo();
+			}
+		});
 		
 		setSize(640, 480);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
+	private void displayDialog() {
+		JOptionPane.showMessageDialog(this,	"..........");
+	}
+	
+	
 	public static void main(String[] args) {
 		new MySign();
 	}

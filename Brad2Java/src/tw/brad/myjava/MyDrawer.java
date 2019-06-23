@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import javax.swing.JPanel;
 
 public class MyDrawer extends JPanel {
-	private LinkedList<LinkedList<Point>> lines;
+	private LinkedList<LinkedList<Point>> lines, recycler;
 	
 	public MyDrawer() {
 		System.out.println("MyDrawer");
@@ -22,6 +22,7 @@ public class MyDrawer extends JPanel {
 		addMouseMotionListener(listener);
 		
 		lines = new LinkedList<>();
+		recycler = new LinkedList<>();
 	}
 
 	private class MyMouseListener extends MouseAdapter {
@@ -32,6 +33,7 @@ public class MyDrawer extends JPanel {
 			LinkedList<Point> line = new LinkedList<>();
 			line.add(point);
 			lines.add(line);
+			recycler.clear();
 		}
 
 		@Override
@@ -43,6 +45,26 @@ public class MyDrawer extends JPanel {
 		}
 	}
 
+	public void clear() {
+		lines.clear();
+		repaint();
+	}
+	public void undo() throws Exception {
+		if (lines.size()>0) {
+			recycler.add(lines.removeLast());
+			repaint();
+		}else {
+			throw new Exception();
+		}
+	}
+	
+	public void redo() {
+		if (recycler.size()>0) {
+			lines.add(recycler.removeLast());
+			repaint();
+		}
+	}
+	
 	private class Point {
 		int x, y;
 		Point(int x, int y){this.x = x; this.y = y;}
