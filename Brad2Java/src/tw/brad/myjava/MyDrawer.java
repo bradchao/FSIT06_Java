@@ -6,8 +6,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.LinkedList;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class MyDrawer extends JPanel {
@@ -64,6 +67,15 @@ public class MyDrawer extends JPanel {
 			repaint();
 		}
 	}
+	
+	public void saveJPEG(File file) throws Exception {
+		BufferedImage image = new BufferedImage(
+				getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+		Graphics2D g2 = image.createGraphics();
+		paint(g2);
+		ImageIO.write(image, "jpeg", file);
+	}
+	
 	
 	private class Point {
 		int x, y;

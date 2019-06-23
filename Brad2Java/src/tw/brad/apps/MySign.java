@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -49,7 +50,7 @@ public class MySign extends JFrame {
 				try {
 					myDrawer.undo();
 				}catch(Exception e2) {
-					displayDialog();
+					displayDialog("no more undo!");
 				}
 			}
 		});
@@ -61,13 +62,32 @@ public class MySign extends JFrame {
 			}
 		});
 		
+		saveJPG.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				saveJPEG();
+			}
+		});
+		
 		setSize(640, 480);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
-	private void displayDialog() {
-		JOptionPane.showMessageDialog(this,	"..........");
+	private void saveJPEG() {
+		JFileChooser jfc = new JFileChooser();
+		if (jfc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+			try {
+				myDrawer.saveJPEG(jfc.getSelectedFile());
+				displayDialog("Save Success!");
+			}catch(Exception e) {
+				displayDialog("Save Failure!");
+			}
+		}
+	}
+	
+	private void displayDialog(String mesg) {
+		JOptionPane.showMessageDialog(this,	mesg);
 	}
 	
 	
