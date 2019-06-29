@@ -31,16 +31,41 @@ public class Racing extends JFrame {
 			}
 		});
 		
+		System.out.println(Thread.activeCount());
+		
 		setSize(800, 480);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
 	private void go() {
+		go.setEnabled(false);
+//		System.out.println(Thread.activeCount());
+		
+//		boolean isAllDead = true;
+//		for (int i=0; i<cars.length; i++) {
+//			if (cars[i]!= null && cars[i].isAlive()) {
+//				isAllDead = false;
+//				break;
+//			}
+//		}
+//		if (!isAllDead) return;
+		
+		rank = 0;
 		for (int i=0; i<cars.length; i++) {
+			lanes[i].setText((i+1) + ". ");
 			cars[i] = new Car(i);
 			cars[i].start();
 		}
+//		System.out.println(Thread.activeCount());
+		
+	}
+	
+	private void stopRound() {
+		for(int i=0; i<cars.length; i++) {
+			cars[i].interrupt();
+		}
+		go.setEnabled(true);
 	}
 	
 	private class Car extends Thread {
@@ -52,11 +77,12 @@ public class Racing extends JFrame {
 				lanes[lane].setText(lanes[lane].getText() + ">");
 				if (i == 99) {
 					lanes[lane].setText(lanes[lane].getText() + ++rank);
+					stopRound();
 				}
 				try {
 					Thread.sleep(50 + (int)(Math.random()*200));
 				}catch(Exception e) {
-					
+					break;
 				}
 			}
 		}
