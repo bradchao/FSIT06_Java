@@ -32,8 +32,8 @@ public class Brad55 extends JFrame {
 	
 	private class MyPanel extends JPanel{
 		private Timer timer;
-		private int viewW, viewH, ballW, ballH;
-		private BufferedImage bgImg;
+		private int viewW, viewH, ballW, ballH, stickX, stickY;
+		private BufferedImage bgImg, stickImg;
 		private BufferedImage[] ballImgs;
 		private LinkedList<BallTask> balls;
 		
@@ -41,6 +41,8 @@ public class Brad55 extends JFrame {
 			ballImgs = new BufferedImage[4];
 			try {
 				bgImg = ImageIO.read(new File("imgs/bg.jpg"));
+				stickImg = ImageIO.read(new File("imgs/stick.jpg"));
+				stickX = (640 - 96)/2; stickY = 400;
 				
 				for (int i=0; i<ballImgs.length; i++) {
 					ballImgs[i] = ImageIO.read(new File("imgs/ball" + i + ".png"));
@@ -59,9 +61,20 @@ public class Brad55 extends JFrame {
 				}
 			});
 			
+			addMouseMotionListener(new MouseAdapter() {
+				@Override
+				public void mouseMoved(MouseEvent e) {
+					moveStick(e.getX() - 48);
+				}
+			});
+			
 			timer = new Timer();
 			timer.schedule(new RefreshView(), 0, 17);
 			
+		}
+		
+		private void moveStick(int x) {
+			stickX = x;
 		}
 		
 		private void createBall(int ex, int ey) {
@@ -84,6 +97,8 @@ public class Brad55 extends JFrame {
 			for(BallTask ball : balls) {
 				g2d.drawImage(ballImgs[ball.getImg()], ball.getX(), ball.getY(), null);
 			}
+			
+			g2d.drawImage(stickImg, stickX, stickY, null);
 			
 		}
 		
