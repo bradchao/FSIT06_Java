@@ -1,5 +1,6 @@
 package tw.brad.apps;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Racing extends JFrame {
 	private JButton go;
@@ -16,13 +18,31 @@ public class Racing extends JFrame {
 	
 	public Racing() {
 		super("Racing");
-		setLayout(new GridLayout(9, 1));
-	
-		go = new JButton("Go!"); add(go);
+		setLayout(new BorderLayout());
+		
+		JPanel mainPanel = new JPanel(new GridLayout(9, 1));
+		go = new JButton("Go!"); mainPanel.add(go);
 		for (int i=0; i<lanes.length; i++) {
 			lanes[i] = new JLabel((i+1) + ". ");
-			add(lanes[i]);
+			mainPanel.add(lanes[i]);
 		}
+		add(mainPanel, BorderLayout.CENTER);
+		
+		JPanel rightPanel = new JPanel(new GridLayout(9, 1));
+		MyClock clock = new MyClock();
+		rightPanel.add(clock);
+		JLabel timer1 = new JLabel("10:02:03"); rightPanel.add(timer1);
+		JLabel timer2 = new JLabel("10:02:03"); rightPanel.add(timer2);
+		JLabel timer3 = new JLabel("10:02:03"); rightPanel.add(timer3);
+		JLabel timer4 = new JLabel("10:02:03"); rightPanel.add(timer4);
+		JLabel timer5 = new JLabel("10:02:03"); rightPanel.add(timer5);
+		JLabel timer6 = new JLabel("10:02:03"); rightPanel.add(timer6);
+		JLabel timer7 = new JLabel("10:02:03"); rightPanel.add(timer7);
+		JLabel timer8 = new JLabel("10:02:03"); rightPanel.add(timer8);
+		
+		add(rightPanel, BorderLayout.EAST);
+		
+		
 		
 		go.addActionListener(new ActionListener() {
 			@Override
