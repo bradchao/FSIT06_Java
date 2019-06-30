@@ -1,5 +1,7 @@
 package tw.brad.apps;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -17,7 +19,9 @@ public class MyClock extends JLabel {
 	private class MyTask extends TimerTask {
 		@Override
 		public void run() {
-			setText("Brad " + i++);
+			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+			String nowString = sdf.format(new Date());
+			setText(nowString);
 		}
 	}
 	
