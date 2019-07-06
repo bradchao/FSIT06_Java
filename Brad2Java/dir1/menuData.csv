@@ -1,0 +1,4 @@
+k_language,k_clear,k_undo,k_redo,k_eximage,k_exobj,k_inobj,k_fontc,k_bgc,k_undonull,k_exOK,k_exfail,k_inOK,k_infail,k_saveimgName,k_saveobjName
+Language 中文,清除,復原,取消復原,儲存照片,儲存專案,讀取專案,筆顏色,背景顏色,沒有上一步了~,存檔成功,存檔失敗,讀取成功,讀取失敗,未命名.jpg,未命名.psObj
+Language English,Clear,Undo,Redo,Export Image,Export Object,Import Object,Font Color,Background Color,No More Undo~,Export Success,Export Fail,Import Success,Import Fail,new.jpg,new.psObj
+Language 日本語,全部消し,戻り,やり直し,保存,セーブ,口一卜,カラーペン,背景色,ヌル,成功,失敗,インポート成功,インポート失敗,新しい.jpg,新しい.psObj
